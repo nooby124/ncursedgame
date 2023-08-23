@@ -7,12 +7,12 @@ pygame.mixer.init()
 pygame.font.init()
 WIDTH, HEIGHT = 900, 500
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("shitty ass pygame game")
+pygame.display.set_caption("cursed ass pygame game")
 HEALTH_FONT = pygame.font.SysFont("comicsans", 35)
-hitsound = pygame.mixer.Sound("C:/Users/NOOBY124/code shit/bonk.mp3")
-shootsound = pygame.mixer.Sound("C:/Users/NOOBY124/code shit/vineboom.mp3")
-skullwonsound = pygame.mixer.Sound("C:/Users/NOOBY124/code shit/pygamefirstgame asstests/skull won.mp3")
-moaiwonsound = pygame.mixer.Sound("C:/Users/NOOBY124/code shit/pygamefirstgame asstests/moai won.mp3")
+hitsound = pygame.mixer.Sound("bonk.mp3")
+shootsound = pygame.mixer.Sound("vineboom.mp3")
+skullwonsound = pygame.mixer.Sound("skull won.mp3")
+moaiwonsound = pygame.mixer.Sound("moai won.mp3")
 global SKULL_HEALTH
 global MOAI_HEALTH
 SKULL_HEALTH = 3
@@ -26,9 +26,9 @@ FPS = 60
 VEL = 5
 BULLET_VEL = 7
 MAX_BULLETS = 3
-space1 = pygame.image.load('C:/Users/NOOBY124/code shit/pygamefirstgame asstests/image-removebg-preview.png')
-space2 = pygame.image.load('C:/Users/NOOBY124/code shit/pygamefirstgame asstests/image-removebg-preview(1).png')
-bg = pygame.transform.scale(pygame.image.load('C:/Users/NOOBY124/code shit/pygamefirstgame asstests/bg.png'), (WIDTH, HEIGHT))
+space1 = pygame.image.load('image-removebg-preview.png')
+space2 = pygame.image.load('image-removebg-preview(1).png')
+bg = pygame.transform.scale(pygame.image.load('bg.png'), (WIDTH, HEIGHT))
 def draw_window(skull_bullets, moai_bullets, skull, moai, SKULL_HEALTH, MOAI_HEALTH):
     WIN.blit(bg, (0, 0))
     pygame.draw.rect(WIN, (0, 0, 0), BORDER)
@@ -110,7 +110,7 @@ def main(MOAI_HEALTH, SKULL_HEALTH):
     moai = pygame.Rect(700, 300, 30, 20)
     clock = pygame.time.Clock()
     run = True
-    pygame.mixer.music.load("C:/Users/NOOBY124/code shit/Tobu_candyland_full_mp3.mp3")
+    pygame.mixer.music.load("Tobu_candyland_full_mp3.mp3")
     pygame.mixer.music.set_volume(0.3)
     pygame.mixer.music.play(-1)
     while run:
@@ -164,3 +164,4 @@ if __name__ == "__main__":
     print("sup")
     main(MOAI_HEALTH, SKULL_HEALTH)
     print("bye")
+    
