@@ -140,13 +140,13 @@ def main(MOAI_HEALTH, SKULL_HEALTH):
         if MOAI_HEALTH <= 0:
             time.sleep(0.2)
             skullwonsound.play()
-            time.sleep(1)
+            time.sleep(1.5)
             pygame.quit()
 
         if SKULL_HEALTH <= 0:
             time.sleep(0.2)
             moaiwonsound.play()
-            time.sleep(1)
+            time.sleep(1.5)
             pygame.quit()
         if winner_text != "":
             break
