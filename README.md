@@ -1,3 +1,2 @@
 # ncursedgame
-a cursed game that i made using a tutorial
-and me brain
+the most epic videogame ever no cap fr
