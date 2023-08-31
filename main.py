@@ -1,5 +1,7 @@
 import pygame
 import time
+import random
+somecheck = []
 black = (0, 0, 0)
 red = (255, 0, 0)
 yellow = (255, 255, 0)
@@ -7,12 +9,20 @@ pygame.mixer.init()
 pygame.font.init()
 WIDTH, HEIGHT = 900, 500
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("cursed ass pygame game")
+pygame.display.set_caption("shitty ass pygame game")
 HEALTH_FONT = pygame.font.SysFont("comicsans", 35)
-hitsound = pygame.mixer.Sound("bonk.mp3")
-shootsound = pygame.mixer.Sound("vineboom.mp3")
-skullwonsound = pygame.mixer.Sound("skull won.mp3")
-moaiwonsound = pygame.mixer.Sound("moai won.mp3")
+wiener_font = pygame.font.SysFont("comicsans", 50)
+nofont = pygame.font.SysFont("comicsans", 0)
+hitsound = pygame.mixer.Sound("C:/Users/NOOBY124/code shit/bonk.mp3")
+shootsound = pygame.mixer.Sound("C:/Users/NOOBY124/code shit/vineboom.mp3")
+skullwonsound = pygame.mixer.Sound("C:/Users/NOOBY124/code shit/pygamefirstgame asstests/skull won.mp3")
+moaiwonsound = pygame.mixer.Sound("C:/Users/NOOBY124/code shit/pygamefirstgame asstests/moai won.mp3")
+finalmomentsong = pygame.mixer.Sound("At the Speed of Light.wav")
+eastereggsound = pygame.mixer.Sound("C:/Users/NOOBY124/code shit/eastereggfart.mp3")
+eastereggsoundbutlouder = pygame.mixer.Sound("C:/Users/NOOBY124/code shit/eastereggfart.mp3")
+eastereggsoundbutlouder.set_volume(2)
+finalmomentsong.set_volume(0.3)
+eastereggsound.set_volume(1)
 global SKULL_HEALTH
 global MOAI_HEALTH
 SKULL_HEALTH = 3
@@ -26,9 +36,9 @@ FPS = 60
 VEL = 5
 BULLET_VEL = 7
 MAX_BULLETS = 3
-space1 = pygame.image.load('image-removebg-preview.png')
-space2 = pygame.image.load('image-removebg-preview(1).png')
-bg = pygame.transform.scale(pygame.image.load('bg.png'), (WIDTH, HEIGHT))
+space1 = pygame.image.load('C:/Users/NOOBY124/code shit/pygamefirstgame asstests/image-removebg-preview.png')
+space2 = pygame.image.load('C:/Users/NOOBY124/code shit/pygamefirstgame asstests/image-removebg-preview(1).png')
+bg = pygame.transform.scale(pygame.image.load('C:/Users/NOOBY124/code shit/pygamefirstgame asstests/bg.png'), (WIDTH, HEIGHT))
 def draw_window(skull_bullets, moai_bullets, skull, moai, SKULL_HEALTH, MOAI_HEALTH):
     WIN.blit(bg, (0, 0))
     pygame.draw.rect(WIN, (0, 0, 0), BORDER)
@@ -38,25 +48,11 @@ def draw_window(skull_bullets, moai_bullets, skull, moai, SKULL_HEALTH, MOAI_HEA
         pygame.draw.rect(WIN, yellow, bullet)
     for bullet in skull_bullets:
         pygame.draw.rect(WIN, yellow, bullet)
-    if MOAI_HEALTH == 3:
+    if MOAI_HEALTH - 1 or 2 or 3:
         moai_health_text = HEALTH_FONT.render(
-            "Health: " + str(3), 1, (255, 255, 255))
-    if MOAI_HEALTH == 3:
+            "Health: " + str(MOAI_HEALTH), 1, (255, 255, 255))
+    if SKULL_HEALTH - 1 or 2 or 3:
         skull_health_text = HEALTH_FONT.render(
-            "Health: " + str(3), 1, (255, 255, 255))
-    if MOAI_HEALTH == 2:
-        moai_health_text = HEALTH_FONT.render(
-            "Health: " + str(2), 1, (255, 255, 255))
-    if SKULL_HEALTH == 2:
-        skull_health_text = HEALTH_FONT.render(
-            "Health: " + str(2), 1, (255, 255, 255))
-    if MOAI_HEALTH == 1:
-        moai_health_text = HEALTH_FONT.render(
-            "Health: " + str(1), 1, (255, 255, 255))
-    if SKULL_HEALTH == 1:
-        skull_health_text = HEALTH_FONT.render(
-            "Health: " + str(1), 1, (255, 255, 255))
-    skull_health_text = HEALTH_FONT.render(
             "Health: " + str(SKULL_HEALTH), 1, (255, 255, 255))
     WIN.blit(skull_health_text, (730, 10))
     WIN.blit(moai_health_text, (10, 10))
@@ -79,7 +75,36 @@ def moai_handle_movement(keys_pressed, moai):
         moai.y -= VEL
     if keys_pressed[pygame.K_DOWN] and moai.y + VEL + moai.height < HEIGHT - 50: #!down
         moai.y += VEL
-
+def final_moment(MOAI_HEALTH, SKULL_HEALTH):
+    if MOAI_HEALTH == 1:
+        if SKULL_HEALTH == 1:
+            if keys_pressed[pygame.K_e] and somecheck == []:
+                somecheck.append("spammer detection")
+                global VEL
+                global MAX_BULLETS
+                global BULLET_VEL
+                MAX_BULLETS = 0
+                pygame.mixer.music.stop()
+                finalmomentsong.stop()
+                if random.randrange(0, 101) == 50:
+                    eastereggsound.play()
+                finalmomentsong.play(-1)
+                time.sleep(3)
+                areureadytext = wiener_font.render(
+                "are you ready?", 1, (255, 255, 255))
+                WIN.blit(areureadytext, (290, 230))
+                pygame.display.update()
+                time.sleep(3)
+                areureadytext = wiener_font.render(
+                "", 1, (255, 255, 255))
+                WIN.blit(areureadytext, (290, 230))
+                pygame.display.update()
+                if random.randrange(0, 1001) == 500:
+                    eastereggsound.set_volume(2)
+                    eastereggsoundbutlouder.play(-1)
+                MAX_BULLETS = 1000
+                BULLET_VEL = 20
+                VEL = 8
 def handle_bullets(skull_bullets, moai_bullets, skull, moai):
     for bullet in skull_bullets:
         bullet.x += BULLET_VEL
@@ -88,13 +113,12 @@ def handle_bullets(skull_bullets, moai_bullets, skull, moai):
             MOAI_HEALTH = 3
             pygame.event.post(pygame.event.Event(MOAI_HIT))
             skull_bullets.remove(bullet)
-            
         elif bullet.x > WIDTH:
             skull_bullets.remove(bullet)
     for bullet in moai_bullets:
         bullet.x -= BULLET_VEL
         if skull.colliderect(bullet):
-            hitsound.play
+            hitsound.play()
             SKULL_HEALTH = 3
             pygame.event.post(pygame.event.Event(SKULL_HIT))
             moai_bullets.remove(bullet)
@@ -110,7 +134,7 @@ def main(MOAI_HEALTH, SKULL_HEALTH):
     moai = pygame.Rect(700, 300, 30, 20)
     clock = pygame.time.Clock()
     run = True
-    pygame.mixer.music.load("Tobu_candyland_full_mp3.mp3")
+    pygame.mixer.music.load("C:/Users/NOOBY124/code shit/Tobu_candyland_full_mp3.mp3")
     pygame.mixer.music.set_volume(0.3)
     pygame.mixer.music.play(-1)
     while run:
@@ -121,7 +145,7 @@ def main(MOAI_HEALTH, SKULL_HEALTH):
             
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LSHIFT and len(skull_bullets) < MAX_BULLETS:
-                    shootsound.play()
+                    shootsound.play()   
                     bullet = pygame.Rect(
                         skull.x + skull.width, skull.y + skull.height//2 - 2, 10 - 3, 30)
                     skull_bullets.append(bullet)
@@ -135,33 +159,39 @@ def main(MOAI_HEALTH, SKULL_HEALTH):
                 SKULL_HEALTH -= 1
             if event.type == MOAI_HIT:
                 MOAI_HEALTH -= 1
-        
         winner_text = ""
         if MOAI_HEALTH <= 0:
-            time.sleep(0.2)
+            time.sleep(0.5)
+            weinertext = wiener_font.render(
+            "skull is weinier", 1, (255, 255, 255))
+            WIN.blit(weinertext, (290, 230))
+            pygame.display.update()
             skullwonsound.play()
-            time.sleep(1.5)
+            time.sleep(1)
             pygame.quit()
+            
 
         if SKULL_HEALTH <= 0:
-            time.sleep(0.2)
+            time.sleep(0.5)
+            weinertext = wiener_font.render(
+            "moai is weiner", 1, (255, 255, 255))
+            WIN.blit(weinertext, (290, 230))
+            pygame.display.update()
             moaiwonsound.play()
-            time.sleep(1.5)
+            time.sleep(1)
             pygame.quit()
         if winner_text != "":
             break
+        final_moment(MOAI_HEALTH, SKULL_HEALTH)
         global keys_pressed
         keys_pressed = pygame.key.get_pressed()
         skull_handle_movement(keys_pressed, skull)
         moai_handle_movement(keys_pressed, moai)
-
         handle_bullets(skull_bullets, moai_bullets, skull, moai)
         draw_window(skull_bullets, moai_bullets, skull, moai, MOAI_HEALTH, SKULL_HEALTH)
+
+                
     pygame.quit()
 
-
 if __name__ == "__main__":
-    print("sup")
     main(MOAI_HEALTH, SKULL_HEALTH)
-    print("bye")
-    
